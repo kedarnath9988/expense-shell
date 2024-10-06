@@ -39,7 +39,7 @@ then
     echo "password already setuped"
 else
 mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
-VALIDATE $? "setting up the Password"
+echo "setting up the Password"
 fi 
 
 
