@@ -36,10 +36,13 @@ VALIDATE $? "starting mysqld"
 mysql -h db.kedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
 if [ $? -eq 0 ]
 then 
-    echo "password already setuped"
+    echo "password already setuped SKPPING "
 else
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
-echo "setting up the Password"
+    mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
+    echo "setting up the Password"
 fi 
 
+
+#mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
+#echo "setting up the Password"
 
