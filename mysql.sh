@@ -1,8 +1,38 @@
 #!/bin/bash 
 
 USER=$(id -u)
-TIME_STAMP=$(date +%F-%H-%M-S)
+TIME_STAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 he=$SCRIPT_NAME-$TIME_STAMP
-echo "printing the " $he
+LOG_FILE=/tmp/$he.log
+# 
+if [ $USER -eq 0 ]
+then 
+    echo "you are the super user"
+else  
+    echo "need super user access to do"
+fi 
+
+VALIDATE(){
+    if [ $1 -eq 0 ]
+    then 
+        echo "$2 done successfully"
+    else
+        echo "$2 failure..."
+    fi 
+}
+
+
+dnf install mysql-server -y &>> LOG_FILE
+VALIDATE $? "installing mysql-server"
+
+dnf start mysqld &>> LOG_FILE
+VALIDATE $? "starting mysqld"
+
+dnf enable mysqld &>> LOG_FILE
+VALIDATE $? "enabling mysqld"
+
+mysql_secure_installation --set-root-pass ExpenseApp@1 
+VALIDATE $? "setting up the Password"
+
 
