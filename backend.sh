@@ -53,6 +53,7 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATE $? "downlode backend code"
 
 cd /app &>>$LOG_FILE
+rm -rf /app/*
 VALIDATE $? "moving to /app directory"
 
 unzip /tmp/backend.zip &>>$LOG_FILE
