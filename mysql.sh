@@ -33,7 +33,13 @@ VALIDATE $? "enabling mysqld"
 systemctl start mysqld &>> LOG_FILE
 VALIDATE $? "starting mysqld"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 
+mysql -h db.kedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
+if [ $? -eq 0 ]
+then 
+    echo "password already setuped"
+else
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
 VALIDATE $? "setting up the Password"
+fi 
 
 
