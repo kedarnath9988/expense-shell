@@ -28,10 +28,10 @@ else
     exit 1 # manually exiting 
 fi 
 
-dnf disable module nodejs:18 -y &>>$LOG_FILE
+dnf module disable nodejs:18 -y &>>$LOG_FILE
 VALIDATE $? "diasbling nodejs"
 
-dnf enable module nodejs:20 -y &>>$LOG_FILE
+dnf module enable nodejs:20 -y &>>$LOG_FILE
 VALIDATE $> "enabling nodejs"
 
 dnf install nodejs -y &>>$LOG_FILE
