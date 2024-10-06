@@ -39,7 +39,7 @@ then
     echo "password already setuped SKPPING "
 else
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
-    echo "setting up the Password"
+    VALIDATE $? "setting up the root password"
 fi 
 
 
