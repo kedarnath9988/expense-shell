@@ -34,7 +34,7 @@ systemctl start mysqld &>> LOG_FILE
 VALIDATE $? "starting mysqld"
 
 mysql -h db.kedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
-if [ $? -eq 0 ]
+if [ $1 -eq 0 ]
 then 
     echo "password already setuped SKPPING "
 else
