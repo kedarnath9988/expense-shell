@@ -33,8 +33,8 @@ VALIDATE $? "enabling mysqld"
 systemctl start mysqld &>> LOG_FILE
 VALIDATE $? "starting mysqld"
 
-mysql -h db.kedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
-if [ $1 -eq 0 ]
+mysql -h db.dawskedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
+if [ $? -eq 0 ]
 then 
     echo "password already setuped SKPPING "
 else
