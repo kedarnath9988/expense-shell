@@ -6,10 +6,10 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 he=$SCRIPT_NAME-$TIME_STAMP
 LOG_FILE=/tmp/$he.log
 
-R="e\[31m"
-G="e\[32m"
-Y="e\[33m"
-N="e\[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 VALIDATE(){
     if [ $1 -eq 0 ]
