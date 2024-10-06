@@ -5,22 +5,27 @@ TIME_STAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 he=$SCRIPT_NAME-$TIME_STAMP
 LOG_FILE=/tmp/$he.log
-# 
+
+R="e\[31m"
+G="e\[32m"
+Y="e\[33m"
+N="e\[0m"
+
 VALIDATE(){
     if [ $1 -eq 0 ]
     then 
-        echo "$2 done successfully"
+        echo -e  "$G $2 done successfully $N"
     else
-        echo "$2 failure..."
+        echo -e "$R  $2 failure... $N"
         exit 1 
     fi 
 }
 
 if [ $USER -eq 0 ]
 then 
-    echo "you are the super user"
+    echo -e "$G you are the super user $N"
 else  
-    echo "need super user access to do"
+    echo -e "$$R need super user access to do$N"
     exit 1 
 fi 
 
@@ -36,7 +41,7 @@ VALIDATE $? "starting mysqld"
 mysql -h db.dawskedarnath.online -uroot -pExpenseApp@1 -e 'SHOW DATABASES;' &>> LOG_FILE
 if [ $? -eq 0 ]
 then 
-    echo "password already setuped SKPPING "
+    echo -e "$Y password already setuped SKPPING $N"
 else
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>> LOG_FILE
     VALIDATE $? "setting up the root password"
