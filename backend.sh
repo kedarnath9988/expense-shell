@@ -59,9 +59,6 @@ VALIDATE $? "moving to /app directory"
 unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "unzip the backend code"
 
-cd /app &>>$LOG_FILE
-VALIDATE $? "moving to /app directory"
-
 npm install &>>$LOG_FILE
 VALIDATE $? "installing node packages"
 
