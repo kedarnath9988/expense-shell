@@ -12,6 +12,7 @@ VALIDATE(){
         echo "$2 done successfully"
     else
         echo "$2 failure..."
+        exit 1 
     fi 
 }
 
@@ -20,6 +21,7 @@ then
     echo "you are the super user"
 else  
     echo "need super user access to do"
+    exit 1 
 fi 
 
 dnf install mysql-server -y &>> LOG_FILE
