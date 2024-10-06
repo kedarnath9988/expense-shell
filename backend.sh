@@ -32,7 +32,7 @@ dnf module disable nodejs:18 -y &>>$LOG_FILE
 VALIDATE $? "diasbling nodejs"
 
 dnf module enable nodejs:20 -y &>>$LOG_FILE
-VALIDATE $> "enabling nodejs"
+VALIDATE $? "enabling nodejs"
 
 dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "installing nodejs"
