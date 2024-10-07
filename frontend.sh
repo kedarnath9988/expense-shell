@@ -16,7 +16,7 @@ VALIDATE(){
         exit 1 
     fi 
 }
-if [ USER -eq 0 ]
+if [ $USER -eq 0 ]
 then
     echo -e "$G You are super-user $N"
 else 
