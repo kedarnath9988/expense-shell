@@ -77,7 +77,7 @@ VALIDATE $? "start backend"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "installing mysql clint"
 
-mysql -h db.dawskedarnath.omline -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+mysql -h db.dawskedarnath.online -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
 VALIDATE $? "loading the schema" 
 
 systemctl restart backend &>>$LOG_FILE
